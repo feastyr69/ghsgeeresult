@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Girl's Hostel Security Guard Entrance Exam (GHSGEE) 2025 Results
+    </h1>
+    <div class="results">
+    <table class="details">
+        <tr>
+            <th>Name :</th>
+            <td class="n1">...</td>
+        </tr>
+        <tr>
+            <th>Roll No. :</th>
+            <td class="roll">...</td>
+        </tr>
+        <tr>
+            <th>Date of Birth :</th>
+            <td class="dob">...</td>
+        </tr>
+        <tr>
+            <th>Institute Name :</th>
+            <td>Indian Institute of Security & Defense of Girls (IISDG) Bombay, Maharashtra</td>
+        </tr>
+    </table>
+    <table class="res">
+        <tr>
+            <th>Subject Code</th>
+            <th>Subject Name</th>
+            <th>Marks Obtained <br>(out of 100)</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>082</td>
+            <td>SECURITY EDUCATION</td>
+            <td class="marks">0</td>
+            <td class="grade">0</td>
+        </tr>
+        <tr>
+            <td>084</td>
+            <td>DESH BHAKTI (PATRIARCHY)</td>
+            <td class="marks">0</td>
+            <td class="grade">0</td>
+        </tr>
+        <tr>
+            <td>124</td>
+            <td>WOMEN'S RIGHT STUDIES</td>
+            <td class="marks">0</td>
+            <td class="grade">0</td>
+        </tr>
+        <tr>
+            <td>088</td>
+            <td>STANDING & WATCHING SKILLS</td>
+            <td class="marks">0</td>
+            <td class="grade">0</td>
+        </tr>
+        <tr>
+            <td>118</td>
+            <td>CHUTPAGLUNESS</td>
+            <td class="marks">0</td>
+            <td class="grade">0</td>
+        </tr>
+    </table>
+    <h3>Result: <span class="resu"></span></h3>
+</div>
+</body>
+<script>
+    function rand(){
+        return Math.floor(Math.random()*81)+20; 
+    }
+    const nameVar=localStorage.getItem("name1");
+    document.querySelector('.n1').innerHTML=nameVar.toUpperCase();
+    document.querySelector('.roll').innerHTML="GHSGEE02"+rand();
+    document.querySelector('.dob').innerHTML=localStorage.getItem("dob1");
+    const marks=document.querySelectorAll('.marks');
+    const grades=document.querySelectorAll('.grade');
+    let res=true;
+    let i=0;
+    marks.forEach(e => {
+        e.innerHTML=rand();
+        if(e.innerHTML<33){
+            grades[i].innerHTML='F'
+            grades[i].classList.add('active');
+            res=false;
+        }
+        else if(e.innerHTML>89) grades[i].innerHTML='A1';
+        else if(e.innerHTML>79) grades[i].innerHTML='A2';
+        else if(e.innerHTML>69) grades[i].innerHTML='B1';
+        else if(e.innerHTML>59) grades[i].innerHTML='B2';
+        else if(e.innerHTML>49) grades[i].innerHTML='C1';
+        else if(e.innerHTML>=33) grades[i].innerHTML='C2';
+        i++;
+    });
+    if(res)document.querySelector('.resu').innerHTML="SELECTED",document.querySelector('h3').classList.add('pass');
+    else document.querySelector('.resu').innerHTML="FAILED";
+</script>
+</html>
